@@ -1,3 +1,12 @@
+// This macro allows you to open a folder of images, 
+// Convert it to stack,
+// let's you subtract bg if you have one
+// else moves on to starting off a template for drawing ROI
+// once you are done with an image in the stack, it'll measure the intensity of the drawn ROIs 
+// you may choose to copy this data,
+// before moving on to the next slice, it saves the ROIs
+
+
 //close all open images
 while (nImages>0) { 
           selectImage(nImages); 
