@@ -1,3 +1,7 @@
+/*
+Use this macro to put a color bar beside the  anisotropy map
+*/
+
 selectWindow("Cell_1_PA.tif");
 run("RGB Color");
 newImage("Cell_1_PA.tif-LUT", "RGB black", 800, 800, 1);
