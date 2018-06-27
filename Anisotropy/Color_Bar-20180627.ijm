@@ -6,7 +6,8 @@
  * complementary to the ParticleAnalyzer (Analyze>Analyze Particles...), generating
  * particle-size heat maps. Requires IJ 1.47r.
  *
- *Macro edited by Amit Cherian, Prof. Satyajit Mayor Lab, 
+ *Aknowledgement: Girish Kale.
+ *Macro credits Amit Cherian, Prof. Satyajit Mayor Lab, 
  *National Centre for Biological Sciences, Bangalore, India 
  *
  */
@@ -71,7 +72,30 @@ setBatchMode(true);
   drawString(label, (rampW-uW)/2, canvasH);
   restoreSettings;
 
+/////////////////////////////////////////
+//to apply the same color bar to a stack of images
+
+run("Canvas Size...", "width=128 height=512 position=Bottom-Center");
+
+//create colorbar stack
+selectWindow("An_Vis.tif");
+depth=nSlices;
+selectWindow("An_Vis.tif");
+run("Duplicate...", "duplicate");
+selectWindow("cramp");
+run("Duplicate...", "title=colorbar");
+run("Duplicate...", "title=colorbar1");
+run("Images to Stack", "method=[Copy (center)] name=Colorbar-Stack title=colorbar use");
+run("Size...", "width=128 height=292 depth="+depth+" constrain interpolation=Bilinear");
+//
+selectWindow("An_Vis-1.tif");
+run("RGB Color");
+run("Combine...", "stack1=An_Vis-1.tif stack2=Colorbar-Stack");
+
+
+/////////////////////////////////////
 setBatchMode("exit & display");
+
 
 function loadLutColors(lut) {
   run(lut);
@@ -87,12 +111,4 @@ function pad(n) {
   n= toString(n); if (lengthOf(n)==1) n= "0"+n; return n;
 }
 
-//to apply the same color bar to a stack of images
-run("Duplicate...", " ");
-run("Images to Stack", "method=[Copy (center)] name=Colorbar-Stack title=colorbar use");
-run("Size...", "width=128 height=292 depth=3 constrain interpolation=Bilinear");
-run("Size...", "width=128 height=292 depth=74 constrain interpolation=Bilinear");
-run("Combine...", "stack1=An_Vis-1.tif stack2=Colorbar-Stack");
-selectWindow("An_Vis-1.tif");
-run("RGB Color");
-run("Combine...", "stack1=An_Vis-1.tif stack2=Colorbar-Stack");
+restoreSettings;
