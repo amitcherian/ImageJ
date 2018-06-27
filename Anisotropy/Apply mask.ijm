@@ -1,0 +1,11 @@
+setAutoThreshold("Default dark");
+//run("Threshold...");
+setOption("BlackBackground", false);
+run("Convert to Mask");
+run("Dilate");
+run("Erode");
+run("Divide...", "value=255.000");
+imageCalculator("Multiply create 32-bit", "cell-1","ani-vis");
+selectWindow("Result of cell-1");
+run("physics");
+setMinAndMax(100, 350);
