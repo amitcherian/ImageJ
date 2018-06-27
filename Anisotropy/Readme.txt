@@ -18,6 +18,17 @@ Finally the total intensity and anisotropy will be calculated.
 This macro helps you draw ROIs, save them, pull the intensity values from the total intenisty image stack and later, apply the same ROI set to the corresponding anisotropy map image pull out the intenisty value.
 
 
+3. Mask_20180627.ijm
+
+This macro helps you remove anisotropy displayed in the background.
+
+4. Color_Bar-20180627.ijm
+
+This macro helps you generate a color bar (LUT) based on the min and max anisotropy values in the anisotropy map.
+
+5. Montage_20180626.ijm3
+
+This macro helps you put the Anisotropy map and the color bar side by side.
 
 Code Credits: Amit Cherian (NCBS-2018), Thomas Van Zanten (NCBS 2018),
 Prof. Satyajit Mayor Lab
