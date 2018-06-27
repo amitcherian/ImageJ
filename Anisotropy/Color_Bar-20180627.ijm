@@ -87,4 +87,12 @@ function pad(n) {
   n= toString(n); if (lengthOf(n)==1) n= "0"+n; return n;
 }
 
-
+//to apply the same color bar to a stack of images
+run("Duplicate...", " ");
+run("Images to Stack", "method=[Copy (center)] name=Colorbar-Stack title=colorbar use");
+run("Size...", "width=128 height=292 depth=3 constrain interpolation=Bilinear");
+run("Size...", "width=128 height=292 depth=74 constrain interpolation=Bilinear");
+run("Combine...", "stack1=An_Vis-1.tif stack2=Colorbar-Stack");
+selectWindow("An_Vis-1.tif");
+run("RGB Color");
+run("Combine...", "stack1=An_Vis-1.tif stack2=Colorbar-Stack");
